@@ -5,10 +5,29 @@ import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
   const { t, i18n } = useTranslation();
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aquí iría la lógica para enviar el formulario
+    console.log('Enviando formulario:', formData);
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
   };
 
   const contactInfo = [
@@ -123,6 +142,9 @@ const Contact = () => {
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground"
                     required
                     placeholder={t('nombre_placeholder')}
@@ -136,6 +158,9 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground"
                     required
                     placeholder={t('email_placeholder')}
@@ -148,6 +173,9 @@ const Contact = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows="4"
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground"
                     required

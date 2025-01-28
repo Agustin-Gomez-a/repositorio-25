@@ -1,10 +1,11 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Github, Linkedin, Mail } from "lucide-react";
-import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
 
   const menuItems = [
     { href: "#hero", label: "inicio" },
@@ -17,25 +18,26 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      href: "https://github.com/agustingomez1986",
       icon: <Github className="h-5 w-5" />,
-      label: "ver_github",
+      href: "https://github.com/agustingomez1986",
+      label: "GitHub",
     },
     {
-      href: "https://www.linkedin.com/in/agustin-gomez-aranda",
       icon: <Linkedin className="h-5 w-5" />,
-      label: "ver_linkedin",
+      href: "https://linkedin.com/in/agustin-gomez-aranda",
+      label: "LinkedIn",
     },
     {
-      href: "mailto:agustingomez1986@gmail.com",
       icon: <Mail className="h-5 w-5" />,
-      label: "enviar_email",
+      href: "mailto:agustingomez1986@gmail.com",
+      label: "Email",
     },
   ];
 
   return (
-    <footer className="bg-background border-t border-border">
-      <div className="container mx-auto px-4 py-12">
+    <footer className="py-12 border-t border-border relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-pink-500/5" />
+      <div className="container relative">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <motion.div
@@ -43,65 +45,39 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-4"
+            className="flex flex-col items-center md:items-start space-y-4"
           >
-            <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-              Agustin Dev
-            </h3>
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={i18n.language + "footer-description"}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="text-muted-foreground"
-              >
-                {t('hero_subtitle')}
-              </motion.p>
-            </AnimatePresence>
+            <span className="text-xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Agustin
+              <span className="ml-2 font-black">Dev</span>
+            </span>
+            <p className="text-muted-foreground text-sm text-center md:text-left">
+              {t('hero_subtitle')}
+            </p>
           </motion.div>
 
-          {/* Navigation */}
+          {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col items-center md:items-start space-y-4"
           >
-            <AnimatePresence mode="wait">
-              <motion.h4
-                key={i18n.language + "footer-nav"}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="font-semibold mb-4 text-foreground"
-              >
-                {t('navegacion')}
-              </motion.h4>
-            </AnimatePresence>
-            <ul className="space-y-2">
-              {menuItems.map((item, index) => (
-                <motion.li
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
-                >
-                  <AnimatePresence mode="wait">
-                    <motion.a
-                      key={i18n.language + item.label}
-                      href={item.href}
-                      className="text-muted-foreground hover:text-foreground transition-colors"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {t(item.label)}
-                    </motion.a>
-                  </AnimatePresence>
-                </motion.li>
+            <h3 className="text-lg font-semibold text-foreground">
+              {t('Enlaces rapidos')}
+            </h3>
+            <ul className="flex flex-col space-y-2">
+              {menuItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="text-muted-foreground hover:text-foreground dark:hover:text-white transition-colors relative group"
+                  >
+                    {t(item.label)}
+                    <span className="absolute left-0 bottom-0 w-full h-0.5 bg-gradient-to-r from-primary via-purple-500 to-pink-500 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                  </a>
+                </li>
               ))}
             </ul>
           </motion.div>
@@ -112,60 +88,38 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-col items-center md:items-start space-y-4"
           >
-            <AnimatePresence mode="wait">
-              <motion.h4
-                key={i18n.language + "footer-social"}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="font-semibold mb-4 text-foreground"
-              >
-                {t('redes_sociales')}
-              </motion.h4>
-            </AnimatePresence>
+            <h3 className="text-lg font-semibold text-foreground">
+              {t('redes_sociales')}
+            </h3>
             <div className="flex space-x-4">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.href}
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-secondary hover:bg-secondary/80 text-foreground transition-colors"
-                  aria-label={t(link.label)}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="p-2 rounded-lg hover:bg-white/10 text-muted-foreground hover:text-foreground dark:hover:text-white transition-colors"
+                  aria-label={link.label}
                 >
                   {link.icon}
-                </motion.a>
+                </a>
               ))}
             </div>
           </motion.div>
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-8 pt-8 border-t border-border text-center text-muted-foreground"
+          className="mt-8 pt-8 border-t border-border/50 text-center"
         >
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={i18n.language + "footer-copyright"}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-            >
-              &copy; {new Date().getFullYear()} Agustin Dev. {t('derechos')}
-            </motion.p>
-          </AnimatePresence>
+          <p className="text-sm text-muted-foreground">
+            &copy; {currentYear} Agustin Dev. {t('derechos_reservados')}
+          </p>
         </motion.div>
       </div>
     </footer>

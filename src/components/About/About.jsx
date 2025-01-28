@@ -25,43 +25,111 @@ const About = () => {
         >
           <div className="flex flex-col-reverse md:grid md:grid-cols-[1fr,auto] gap-12 items-center">
             {/* Contenido */}
-            <div className="space-y-6 max-w-xl">
-              <div className="space-y-2">
-                <AnimatePresence mode="wait">
-                  <motion.h2
-                    key={i18n.language + "title"}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-3xl font-bold text-foreground"
-                  >
-                    {t('sobre_mi_titulo')}
-                  </motion.h2>
-                </AnimatePresence>
-                <motion.h3
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-xl font-medium bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
-                >
-                  Agustín Gómez Aranda
-                </motion.h3>
-              </div>
+            <div className="space-y-8 max-w-xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-pink-500">
+                  {t('sobre_mi')}
+                </h2>
+              </motion.div>
 
               <AnimatePresence mode="wait">
                 <motion.p
-                  key={i18n.language + "desc"}
+                  key={i18n.language + "desc1"}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-muted-foreground"
+                  className="text-muted-foreground mb-4"
                 >
                   {t('sobre_mi_descripcion')}
                 </motion.p>
               </AnimatePresence>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex flex-col gap-6"
+              >
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.a
+                    href="/assets/cv/cv-espanol.pdf"
+                    download="Agustin-Gomez-CV-ES.pdf"
+                    onClick={(e) => {
+                      if (!e.currentTarget.href.endsWith('.pdf')) {
+                        e.preventDefault();
+                        alert('CV en español estará disponible próximamente');
+                      }
+                    }}
+                    className="group px-8 py-3 rounded-full bg-gradient-to-r from-primary to-purple-600 text-white font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span>{t('descargar_cv_espanol')}</span>
+                    <svg
+                      className="inline-block ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                      />
+                    </svg>
+                  </motion.a>
+
+                  <motion.a
+                    href="/assets/cv/cv-ingles.pdf"
+                    download="Agustin-Gomez-CV-EN.pdf"
+                    onClick={(e) => {
+                      if (!e.currentTarget.href.endsWith('.pdf')) {
+                        e.preventDefault();
+                        alert('CV in English will be available soon');
+                      }
+                    }}
+                    className="group px-8 py-3 rounded-full bg-secondary hover:bg-secondary/80 text-foreground dark:text-white font-medium transition-colors duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span>{t('descargar_cv_ingles')}</span>
+                    <svg
+                      className="inline-block ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                      />
+                    </svg>
+                  </motion.a>
+                </div>
+
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={i18n.language + "desc2"}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-muted-foreground"
+                  >
+                    {t('sobre_mi_descripcion2')}
+                  </motion.p>
+                </AnimatePresence>
+              </motion.div>
 
               {/* Social Links */}
               <motion.div
@@ -120,7 +188,7 @@ const About = () => {
             >
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <img
-                  src="/img/profile.jpg"
+                  src="/src/assets/img/yo.png"
                   alt="Agustín Gómez Aranda"
                   className="w-full h-full object-cover"
                 />

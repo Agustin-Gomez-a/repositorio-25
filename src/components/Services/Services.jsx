@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Palette, Code, Smartphone, Search } from "lucide-react";
+import { Palette, Code, Smartphone, Search, Paintbrush, Code2, BarChart3, Terminal } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 
 const Services = () => {
@@ -9,50 +9,29 @@ const Services = () => {
   const services = [
     {
       icon: <Palette className="h-6 w-6" />,
-      title: "diseno_web",
-      description: "diseno_web_desc",
-      gradient: "from-blue-500 to-purple-500",
+      title: t('diseno_web'),
+      description: t('diseno_web_desc'),
+      gradient: "from-blue-500 to-cyan-500",
     },
     {
-      icon: <Code className="h-6 w-6" />,
-      title: "desarrollo_frontend",
-      description: "desarrollo_frontend_desc",
+      icon: <Code2 className="h-6 w-6" />,
+      title: t('desarrollo_frontend'),
+      description: t('desarrollo_frontend_desc'),
       gradient: "from-purple-500 to-pink-500",
     },
     {
-      icon: <Smartphone className="h-6 w-6" />,
-      title: "diseno_creativo",
-      description: "diseno_creativo_desc",
+      icon: <Paintbrush className="h-6 w-6" />,
+      title: t('diseno_creativo'),
+      description: t('diseno_creativo_desc'),
       gradient: "from-pink-500 to-red-500",
     },
     {
-      icon: <Search className="h-6 w-6" />,
-      title: "optimizacion",
-      description: "optimizacion_desc",
+      icon: <BarChart3 className="h-6 w-6" />,
+      title: t('optimizacion'),
+      description: t('optimizacion_desc'),
       gradient: "from-red-500 to-orange-500",
     },
   ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
 
   return (
     <div id="servicios" className="container py-24">
@@ -68,66 +47,52 @@ const Services = () => {
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground dark:text-white">
             {t('servicios_titulo')}
           </h2>
+          <p className="text-xl text-muted-foreground">
+            {t('servicios_subtitulo')}
+          </p>
         </motion.div>
       </AnimatePresence>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="grid gap-8 md:grid-cols-2 lg:grid-cols-4"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {services.map((service, index) => (
           <motion.div
-            key={index}
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-background to-secondary/20 p-6 shadow-lg transition-all duration-300 hover:shadow-xl"
+            key={service.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            className="relative p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300"
           >
-            <div className={`absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300 ${service.gradient}`} />
-            
-            <div className="relative z-10 space-y-4">
-              <motion.div
-                initial={{ rotate: 0 }}
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className={`inline-flex rounded-xl bg-gradient-to-r p-3 text-white shadow-lg ${service.gradient}`}
-              >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+              className="absolute -top-4 -left-4"
+            >
+              <div className={`p-4 rounded-xl bg-gradient-to-r ${service.gradient} text-white`}>
                 {service.icon}
-              </motion.div>
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={i18n.language + service.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h3 className="text-xl font-bold text-foreground dark:text-white">
-                    {t(service.title)}
-                  </h3>
-                  <p className="text-muted-foreground mt-2">
-                    {t(service.description)}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-              
+              </div>
+            </motion.div>
+            <AnimatePresence mode="wait">
               <motion.div
-                className="mt-4"
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2 }}
+                key={i18n.language + service.title}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="h-1 w-12 rounded-full bg-gradient-to-r shadow-lg transition-all duration-300 group-hover:w-16 group-hover:shadow-xl" style={{
-                  backgroundImage: `linear-gradient(to right, var(--${service.gradient.split('-')[2]}-500), var(--${service.gradient.split('-')[4]}-500))`
-                }} />
+                <h3 className="text-lg font-semibold text-foreground dark:text-white mb-2 mt-2">
+                  {t(service.title)}
+                </h3>
+                <p className="text-muted-foreground">
+                  {t(service.description)}
+                </p>
               </motion.div>
-            </div>
+            </AnimatePresence>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
