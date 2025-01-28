@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 const projects = [
   {
     title: "App LABA",
-    description: "proyecto_laba_desc",
-    image: "/src/assets/img/apple-app.laba.png",
+    description: "Proyecto App LABA",
+    image: "/img/apple-app.laba.png",
     category: "web",
     link: "https://app-laba.vercel.app/",
     github: "#",
@@ -15,26 +15,26 @@ const projects = [
   },
   {
     title: "LABA Admin",
-    description: "proyecto_laba_admin_desc",
-    image: "/src/assets/img/apple-laba-admin.png",
+    description: "Proyecto LABA Admin",
+    image: "/img/apple-laba-admin.png",
     category: "web",
     link: "https://laba-web.vercel.app/",
     github: "#",
     tags: ["React", "Node.js", "MySQL", "Tailwind", "Vite"]
   },
   {
-    title: "RenovAr",
-    description: "proyecto_renovar_desc",
-    image: "/src/assets/img/apple-renovarg.png",
+    title: "RenovArg",
+    description: "Proyecto RenovARG",
+    image: "/img/apple-renovarg.png",
     category: "web",
     link: "https://renovar-web.vercel.app/",
     github: "#",
     tags: ["React", "Tailwind", "Vite"]
   },
   {
-    title: "VacunAr",
-    description: "proyecto_vacunar_desc",
-    image: "/src/assets/img/apple-vacunarg.png",
+    title: "VacunARG",
+    description: "Proyecto VacunARG",
+    image: "/img/apple-vacunarg.png",
     category: "web",
     link: "https://vacunar-web.vercel.app/",
     github: "#",
@@ -42,8 +42,8 @@ const projects = [
   },
   {
     title: "Viazzo",
-    description: "proyecto_viazzo_desc",
-    image: "/src/assets/img/apple-viazzo.png",
+    description: "Proyecto Viazzo",
+    image: "/img/apple-viazzo.png",
     category: "web",
     link: "#",
     github: "#",
@@ -51,8 +51,8 @@ const projects = [
   },
   {
     title: "BDER App",
-    description: "proyecto_bder_desc",
-    image: "/src/assets/img/iphone-bder.png",
+    description: "proyect Bder app",
+    image: "/img/iphone-bder.png",
     category: "ux/ui",
     link: "#",
     github: "#",
@@ -60,8 +60,8 @@ const projects = [
   },
   {
     title: "Check App",
-    description: "proyecto_check_desc",
-    image: "/src/assets/img/iphone-check.png",
+    description: "Proyecto Check App",
+    image: "/img/iphone-check.png",
     category: "ux/ui",
     link: "#",
     github: "#",
@@ -69,26 +69,26 @@ const projects = [
   },
   {
     title: "Digital Mirage",
-    description: "proyecto_mirage_desc",
-    image: "/src/assets/img/iphone-digital mirage.png",
+    description: "Proyecto Digital Mirage",
+    image: "/img/iphone-digital mirage.png",
     category: "ux/ui",
     link: "#",
     github: "#",
     tags: ["Figma", "UI Design", "User Testing"]
   },
   {
-    title: "ReciclAr",
-    description: "proyecto_reciclar_desc",
-    image: "/src/assets/img/iphone-reciclarg.png",
+    title: "ReciclARG",
+    description: "Proyecto ReciclARG",
+    image: "/img/iphone-reciclarg.png",
     category: "ux/ui",
     link: "#",
     github: "#",
     tags: ["Figma", "UI Design", "User Flow"]
   },
   {
-    title: "RenovAr App",
-    description: "proyecto_renovar_app_desc",
-    image: "/src/assets/img/iphone-renovarg.png",
+    title: "RenovARG App",
+    description: "Proyecto RenovARG App",
+    image: "/img/iphone-renovarg.png",
     category: "ux/ui",
     link: "#",
     github: "#",
@@ -101,8 +101,8 @@ const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("web");
 
   const categories = [
-    { id: "web", label: "desarrollo_web" },
-    { id: "ux/ui", label: "diseno_uxui" },
+    { id: "web", label: "Desarrollo Web" },
+    { id: "ux/ui", label: "Diseño UX/UI" },
   ];
 
   const filteredProjects = projects.filter((project) => project.category === selectedCategory);
