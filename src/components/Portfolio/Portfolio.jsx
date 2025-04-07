@@ -101,8 +101,8 @@ const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("web");
 
   const categories = [
-    { id: "web", label: "Desarrollo Web" },
-    { id: "ux/ui", label: "Diseño UX/UI" },
+    { id: "web", label: "desarrollo_web_label" },
+    { id: "ux/ui", label: "diseno_ux_ui_label" },
   ];
 
   const filteredProjects = projects.filter((project) => project.category === selectedCategory);

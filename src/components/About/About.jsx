@@ -59,8 +59,8 @@ const About = () => {
               >
                 <div className="flex flex-col sm:flex-row gap-4">
                   <motion.a
-                    href="/assets/cv/cv-espanol.pdf"
-                    download="Agustin-Gomez-CV-ES.pdf"
+                    href="/cv/cv-español.pdf"
+                    download="cv-español.pdf"
                     onClick={(e) => {
                       if (!e.currentTarget.href.endsWith('.pdf')) {
                         e.preventDefault();
@@ -88,8 +88,8 @@ const About = () => {
                   </motion.a>
 
                   <motion.a
-                    href="/assets/cv/cv-ingles.pdf"
-                    download="Agustin-Gomez-CV-EN.pdf"
+                    href="/cv/cv-ingles.pdf"
+                    download="cv-ingles.pdf"
                     onClick={(e) => {
                       if (!e.currentTarget.href.endsWith('.pdf')) {
                         e.preventDefault();
@@ -140,7 +140,7 @@ const About = () => {
                 className="flex gap-4"
               >
                 <a
-                  href="https://github.com/agustingomez1986"
+                  href="https://github.com/Agustin-Gomez-a"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-secondary/50 hover:bg-secondary text-foreground transition-colors"
@@ -171,7 +171,13 @@ const About = () => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
                   className="px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-purple-600 text-white hover:from-primary/90 hover:to-purple-600/90 transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
-                  onClick={() => document.getElementById("contacto").scrollIntoView({ behavior: "smooth" })}
+                  onClick={() => {
+                    document.getElementById("contacto").scrollIntoView({ 
+                      behavior: "smooth",
+                      block: "start",
+                      inline: "nearest"
+                    });
+                  }}
                 >
                   {t('contactame')}
                 </motion.button>

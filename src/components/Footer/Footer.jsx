@@ -19,7 +19,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <Github className="h-5 w-5" />,
-      href: "https://github.com/agustingomez1986",
+      href: "https://github.com/Agustin-Gomez-a",
       label: "GitHub",
     },
     {

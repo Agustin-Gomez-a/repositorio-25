@@ -74,6 +74,14 @@ const resources = {
       "telefono": "Teléfono",
       "mensaje_enviado": "¡Mensaje enviado con éxito!",
       "error_mensaje": "Hubo un error al enviar el mensaje",
+      "derechos reservados": "Todos los derechos reservados",
+      "desarrollo_web_button": "Desarrollo Web",
+      "diseno_ux_ui_button": "Diseño UX/UI",
+      "desarrollo_web_label": "Desarrollo Web",
+      "diseno_ux_ui_label": "Diseño UX/UI",
+      "nivel avanzado": "Avanzado",
+      "nivel intermedio": "Intermedio",
+      "nivel basico": "Básico"
     }
   },
   en: {
@@ -148,6 +156,14 @@ const resources = {
       "telefono": "Phone",
       "mensaje_enviado": "Message sent successfully!",
       "error_mensaje": "There was an error sending the message",
+      "derechos reservados": "All rights reserved",
+      "desarrollo_web_button": "Web Development",
+      "diseno_ux_ui_button": "UX/UI Design",
+      "desarrollo_web_label": "Web Development",
+      "diseno_ux_ui_label": "UX/UI Design",
+      "nivel avanzado": "Advanced",
+      "nivel intermedio": "Intermediate",
+      "nivel basico": "Basic"
     }
   }
 };

@@ -28,7 +28,7 @@ const Skills = () => {
     {
       name: "JavaScript",
       icon: <SiJavascript className="h-8 w-8" />,
-      level: "nivel_avanzado",
+      level: "nivel avanzado",
       percentage: 85,
       color: "from-[#F7DF1E] to-[#FFD700]",
       shadowColor: "shadow-[#F7DF1E]/20",
@@ -36,7 +36,7 @@ const Skills = () => {
     {
       name: "HTML5",
       icon: <SiHtml5 className="h-8 w-8" />,
-      level: "nivel_avanzado",
+      level: "nivel avanzado",
       percentage: 95,
       color: "from-[#E34F26] to-[#FF5722]",
       shadowColor: "shadow-[#E34F26]/20",
@@ -44,7 +44,7 @@ const Skills = () => {
     {
       name: "CSS3",
       icon: <SiCss3 className="h-8 w-8" />,
-      level: "nivel_avanzado",
+      level: "nivel avanzado",
       percentage: 90,
       color: "from-[#1572B6] to-[#00BCD4]",
       shadowColor: "shadow-[#1572B6]/20",
@@ -52,7 +52,7 @@ const Skills = () => {
     {
       name: "Tailwind CSS",
       icon: <SiTailwindcss className="h-8 w-8" />,
-      level: "nivel_avanzado",
+      level: "nivel avanzado",
       percentage: 85,
       color: "from-[#38B2AC] to-[#0ED3CF]",
       shadowColor: "shadow-[#38B2AC]/20",
@@ -68,7 +68,7 @@ const Skills = () => {
     {
       name: "MySQL",
       icon: <SiMysql className="h-8 w-8" />,
-      level: "nivel_intermedio",
+      level: "nivel intermedio",
       percentage: 65,
       color: "from-[#4479A1] to-[#2196F3]",
       shadowColor: "shadow-[#4479A1]/20",
@@ -76,7 +76,7 @@ const Skills = () => {
     {
       name: "Figma",
       icon: <SiFigma className="h-8 w-8" />,
-      level: "nivel_intermedio",
+      level: "nivel intermedio",
       percentage: 70,
       color: "from-[#F24E1E] to-[#FF7262]",
       shadowColor: "shadow-[#F24E1E]/20",
@@ -126,18 +126,19 @@ const Skills = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-background to-secondary/20 p-6 shadow-lg transition-all duration-300 hover:shadow-xl"
+            className="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-background to-secondary/5 p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg"
           >
-            <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+            <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
             
-            <div className="relative z-10 space-y-4">
+            <div className="relative z-10 flex flex-col items-center text-center space-y-4">
               <motion.div
-                initial={{ rotate: 0 }}
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className={`inline-flex rounded-xl bg-gradient-to-r ${skill.color} p-3 text-white shadow-lg ${skill.shadowColor}`}
+                initial={{ rotate: 0, scale: 1 }}
+                whileHover={{ rotate: 360, scale: 1.2 }}
+                transition={{ duration: 0.7, type: "spring", stiffness: 200 }}
+                className={`relative inline-flex rounded-2xl bg-gradient-to-r ${skill.color} p-6 text-white shadow-lg ${skill.shadowColor} transform-gpu`}
               >
-                {skill.icon}
+                <div className="absolute inset-0 rounded-2xl bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative z-10">{skill.icon}</div>
               </motion.div>
 
               <AnimatePresence mode="wait">
@@ -147,29 +148,16 @@ const Skills = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
+                  className="space-y-2"
                 >
-                  <h3 className="text-lg font-semibold text-foreground dark:text-white">
+                  <h3 className="text-xl font-bold text-foreground dark:text-white">
                     {skill.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {t(skill.level)}
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {t(skill.level.replace('_', ' '))}
                   </p>
                 </motion.div>
               </AnimatePresence>
-
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="h-2 w-full rounded-full bg-secondary/50 overflow-hidden"
-              >
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.percentage}%` }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                  className={`h-full rounded-full bg-gradient-to-r ${skill.color}`}
-                />
-              </motion.div>
             </div>
           </motion.div>
         ))}
