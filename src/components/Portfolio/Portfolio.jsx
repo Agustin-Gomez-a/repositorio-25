@@ -18,7 +18,7 @@ const projects = [
     description: "Proyecto LABA Admin",
     image: "/img/apple-laba-admin.png",
     category: "web",
-    link: "https://laba-web.vercel.app/",
+    link: "https://laba-taxi.netlify.app/",
     github: "#",
     tags: ["React", "Node.js", "MySQL", "Tailwind", "Vite"]
   },
@@ -27,8 +27,8 @@ const projects = [
     description: "Proyecto RenovARG",
     image: "/img/apple-renovarg.png",
     category: "web",
-    link: "https://renovar-web.vercel.app/",
-    github: "#",
+    link: "https://renovarg.netlify.app/",
+    github: "https://github.com/Agustin-Gomez-a/reciclarg2025",
     tags: ["React", "Tailwind", "Vite"]
   },
   {
@@ -36,8 +36,8 @@ const projects = [
     description: "Proyecto VacunARG",
     image: "/img/apple-vacunarg.png",
     category: "web",
-    link: "https://vacunar-web.vercel.app/",
-    github: "#",
+    link: "https://vacunarg.netlify.app/",
+    github: "https://github.com/Agustin-Gomez-a/sitevacunarg",
     tags: ["React", "Tailwind", "Vite"]
   },
   {
@@ -45,7 +45,7 @@ const projects = [
     description: "Proyecto Viazzo",
     image: "/img/apple-viazzo.png",
     category: "web",
-    link: "#",
+    link: "https://viazzo.netlify.app/",
     github: "#",
     tags: ["React", "Tailwind", "Vite"]
   },
