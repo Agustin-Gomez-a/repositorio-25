@@ -64,12 +64,12 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6" />,
       title: "telefono",
-      value: "+1 234 567 890",
+      value: "+54 9 381 623 6718",
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "ubicacion",
-      value: "ubicacion_valor",
+      value: "San Miguel de Tucumán",
     },
   ];
 

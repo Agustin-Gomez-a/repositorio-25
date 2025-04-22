@@ -9,7 +9,7 @@ const projects = [
     description: "Proyecto App LABA",
     image: "/img/apple-app.laba.png",
     category: "web",
-    link: "https://app-laba.vercel.app/",
+    link: "#",
     github: "#",
     tags: ["React", "Node.js", "MySQL", "Tailwind", "Vite"]
   },
@@ -21,6 +21,33 @@ const projects = [
     link: "https://laba-taxi.netlify.app/",
     github: "#",
     tags: ["React", "Node.js", "MySQL", "Tailwind", "Vite"]
+  },
+  {
+    title: "Claudio Portfolio",
+    description: "Proyecto Portfolio Claudio",
+    image: "/img/claudio-portfolio.png",
+    category: "web",
+    link: "https://portfolio-claudio.pages.dev/",
+    github: "#",
+    tags: ["React", "Tailwind", "Vite"]
+  },
+  {
+    title: "MFGA",
+    description: "Proyecto MFGA",
+    image: "/img/Mfga.png",
+    category: "web",
+    link: "https://mfga.netlify.app/",
+    github: "#",
+    tags: ["React", "Tailwind", "Vite"]
+  },
+  {
+    title: "PowerFit",
+    description: "Proyecto PowerFit",
+    image: "/img/powerfit.png",
+    category: "web",
+    link: "https://gym-powerfit.netlify.app/",
+    github: "#",
+    tags: ["React", "Tailwind", "Vite"]
   },
   {
     title: "RenovArg",
@@ -155,7 +182,7 @@ const Portfolio = () => {
       {/* Grid de proyectos */}
       <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
       >
         <AnimatePresence mode="wait">
           {filteredProjects.map((project) => (
@@ -166,88 +193,108 @@ const Portfolio = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              className="group relative overflow-hidden rounded-xl bg-white dark:bg-background border border-border shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group relative bg-[#1e2533] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className={`overflow-hidden ${
-                project.image.includes('apple-') 
-                  ? 'aspect-[16/10] max-h-[240px]' // Para mockups de PC
-                  : 'aspect-[9/19.5] max-h-[360px]' // Para mockups de iPhone
-              }`}>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className={`w-full h-full ${
-                    project.image.includes('apple-')
-                      ? 'object-cover' // Para mockups de PC
-                      : 'object-contain' // Para mockups de iPhone
-                  } transform group-hover:scale-105 transition-transform duration-300`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="flex gap-3 mb-3">
-                      <motion.a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-primary/90 text-white hover:bg-primary transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        aria-label={t('ver_proyecto')}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </motion.a>
-                      <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-secondary/90 text-foreground dark:text-white hover:bg-secondary transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        aria-label={t('ver_codigo')}
-                      >
-                        <Github className="h-4 w-4" />
-                      </motion.a>
+              {project.category === "web" ? (
+                // Monitor frame para proyectos web
+                <div className="relative p-4 overflow-hidden">
+                  <div className="relative bg-[#0f141e] rounded-md overflow-hidden">
+                    {/* Screen */}
+                    <div className="aspect-[4/3] relative overflow-hidden">
+                      <img 
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-center mix-blend-normal"
+                      />
                     </div>
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={i18n.language + project.title}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
-                        <p className="text-white/80 text-sm mb-3">{t(project.description)}</p>
-                      </motion.div>
-                    </AnimatePresence>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-0.5 rounded-full bg-primary/20 text-primary text-xs font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    {/* Monitor stand */}
+                    <div className="h-4 bg-gray-200 flex items-center justify-center">
+                      <div className="w-6 h-1 bg-gray-300 rounded"></div>
+                    </div>
+                    <div className="h-10 w-16 bg-gray-300 mx-auto rounded-b-md"></div>
+                  </div>
+                </div>
+              ) : (
+                // Phone frame para proyectos UX/UI
+                <div className="relative p-4 flex justify-center">
+                  <div className="relative bg-[#0f141e] rounded-3xl overflow-hidden border-4 border-gray-800 shadow-lg">
+                    {/* Notch del teléfono */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-7 bg-gray-800 rounded-b-xl z-10"></div>
+                    
+                    {/* Phone screen */}
+                    <div className="aspect-[9/19.5] w-48 relative overflow-hidden bg-white">
+                      <img 
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top mix-blend-normal"
+                      />
+                    </div>
+                    
+                    {/* Home button */}
+                    <div className="h-4 flex items-center justify-center bg-gray-800">
+                      <div className="w-10 h-1 bg-gray-600 rounded-full"></div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="p-4">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={i18n.language + project.title + "-info"}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <h3 className="text-lg font-bold text-foreground dark:text-white mb-1">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">{t(project.description)}</p>
-                  </motion.div>
-                </AnimatePresence>
+              )}
+              
+              {/* Content */}
+              <div className="p-4 text-white">
+                <h3 className="text-xl font-bold mb-1">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 mb-4 text-sm">
+                  {t(project.description)}
+                </p>
+                
+                <div className="flex justify-between items-center">
+                  <div className="flex gap-2">
+                    <motion.a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      aria-label={t('ver_proyecto')}
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </motion.a>
+                    <motion.a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      aria-label={t('ver_codigo')}
+                    >
+                      <Github className="h-4 w-4" />
+                    </motion.a>
+                  </div>
+                  <div className="flex flex-wrap gap-2 justify-end">
+                    {project.tags.map((tag, index) => index < 3 && (
+                      <span
+                        key={tag}
+                        className={`
+                          px-2 py-1 rounded text-xs font-medium
+                          ${tag === 'React' ? 'bg-blue-900 text-blue-200' : ''}
+                          ${tag === 'Tailwind' ? 'bg-teal-900 text-teal-200' : ''}
+                          ${tag === 'Vite' ? 'bg-purple-900 text-purple-200' : ''}
+                          ${tag === 'Node.js' ? 'bg-green-900 text-green-200' : ''}
+                          ${tag === 'MySQL' ? 'bg-orange-900 text-orange-200' : ''}
+                          ${tag === 'Figma' ? 'bg-pink-900 text-pink-200' : ''}
+                          ${tag.includes('UI') ? 'bg-red-900 text-red-200' : ''}
+                          ${tag.includes('UX') ? 'bg-yellow-900 text-yellow-200' : ''}
+                          ${tag.includes('User') ? 'bg-indigo-900 text-indigo-200' : ''}
+                          ${!tag.match(/(React|Tailwind|Vite|Node.js|MySQL|Figma|UI|UX|User)/) ? 'bg-gray-700 text-gray-200' : ''}
+                        `}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
