@@ -163,14 +163,13 @@ const Contact = () => {
                 <div className="mb-6">
                   <label htmlFor="name" className="block text-foreground dark:text-white font-medium mb-2">
                     {t('nombre')}
-                  </label>
-                  <input
+                  </label>                  <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground text-foreground dark:text-white"
                     required
                     placeholder={t('nombre_placeholder')}
                   />
@@ -179,14 +178,13 @@ const Contact = () => {
                 <div className="mb-6">
                   <label htmlFor="email" className="block text-foreground dark:text-white font-medium mb-2">
                     {t('email')}
-                  </label>
-                  <input
+                  </label>                  <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground text-foreground dark:text-white"
                     required
                     placeholder={t('email_placeholder')}
                   />
@@ -195,14 +193,13 @@ const Contact = () => {
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-foreground dark:text-white font-medium mb-2">
                     {t('mensaje')}
-                  </label>
-                  <textarea
+                  </label>                  <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows="4"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground"
+                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground text-foreground dark:text-white"
                     required
                     placeholder={t('mensaje_placeholder')}
                   ></textarea>

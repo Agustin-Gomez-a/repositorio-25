@@ -30,11 +30,10 @@ const projects = [
     link: "https://portfolio-claudio.pages.dev/",
     github: "#",
     tags: ["React", "Tailwind", "Vite"]
-  },
-  {
+  },  {
     title: "MFGA",
     description: "Proyecto MFGA",
-    image: "/img/Mfga.png",
+    image: "/img/Mfga1.png",
     category: "web",
     link: "https://mfga.netlify.app/",
     github: "#",

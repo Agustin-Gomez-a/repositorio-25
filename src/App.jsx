@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { motion } from 'framer-motion';
+import { StagewiseToolbar } from '@stagewise/toolbar-react';
+import { ReactPlugin } from '@stagewise-plugins/react';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
@@ -22,6 +24,11 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className="min-h-screen bg-background font-sans antialiased transition-colors duration-300">
+          <StagewiseToolbar 
+            config={{
+              plugins: [ReactPlugin]
+            }}
+          />
           <Navbar />
           <main className="pt-16">
             <motion.div
