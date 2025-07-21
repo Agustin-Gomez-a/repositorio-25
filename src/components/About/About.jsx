@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import LazyImage from '../LazyImage/LazyImage';
 
 const About = () => {
   const { t, i18n } = useTranslation();
@@ -193,7 +194,7 @@ const About = () => {
               className="relative"
             >
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-                <img
+                <LazyImage
                   src="/img/yo.png"
                   alt="Agustín Gómez Aranda"
                   className="w-full h-full object-cover"

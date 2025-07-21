@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import LazyImage from '../LazyImage/LazyImage';
 
 const projects = [
   {
@@ -209,7 +210,7 @@ const Portfolio = () => {
                   <div className="relative bg-[#0f141e] rounded-md overflow-hidden">
                     {/* Screen */}
                     <div className="aspect-[4/3] relative overflow-hidden">
-                      <img 
+                      <LazyImage 
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover object-center mix-blend-normal"
@@ -231,7 +232,7 @@ const Portfolio = () => {
                     
                     {/* Phone screen */}
                     <div className="aspect-[9/19.5] w-48 relative overflow-hidden bg-white">
-                      <img 
+                      <LazyImage 
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover object-top mix-blend-normal"
