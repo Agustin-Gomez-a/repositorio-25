@@ -49,6 +49,15 @@ const projects = [
     tags: ["React", "Tailwind", "Vite"]
   },
   {
+    title: "Humito Artesanal",
+    description: "Proyecto Humito Artesanal",
+    image: "/img/humito-artesanal.png",
+    category: "web",
+    link: "https://humitoartesanal.netlify.app/",
+    github: "#",
+    tags: ["Astro", "Tailwind", "JavaScript"]
+  },
+  {
     title: "RenovArg",
     description: "Proyecto RenovARG",
     image: "/img/apple-renovarg.png",
@@ -280,13 +289,15 @@ const Portfolio = () => {
                           ${tag === 'React' ? 'bg-blue-900 text-blue-200' : ''}
                           ${tag === 'Tailwind' ? 'bg-teal-900 text-teal-200' : ''}
                           ${tag === 'Vite' ? 'bg-purple-900 text-purple-200' : ''}
+                          ${tag === 'Astro' ? 'bg-orange-900 text-orange-200' : ''}
+                          ${tag === 'JavaScript' ? 'bg-yellow-900 text-yellow-200' : ''}
                           ${tag === 'Node.js' ? 'bg-green-900 text-green-200' : ''}
                           ${tag === 'MySQL' ? 'bg-orange-900 text-orange-200' : ''}
                           ${tag === 'Figma' ? 'bg-pink-900 text-pink-200' : ''}
                           ${tag.includes('UI') ? 'bg-red-900 text-red-200' : ''}
                           ${tag.includes('UX') ? 'bg-yellow-900 text-yellow-200' : ''}
                           ${tag.includes('User') ? 'bg-indigo-900 text-indigo-200' : ''}
-                          ${!tag.match(/(React|Tailwind|Vite|Node.js|MySQL|Figma|UI|UX|User)/) ? 'bg-gray-700 text-gray-200' : ''}
+                          ${!tag.match(/(React|Tailwind|Vite|Astro|JavaScript|Node.js|MySQL|Figma|UI|UX|User)/) ? 'bg-gray-700 text-gray-200' : ''}
                         `}
                       >
                         {tag}
