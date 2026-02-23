@@ -34,7 +34,7 @@ const Services = () => {
   ];
 
   return (
-    <div id="servicios" className="container py-24">
+    <div id="servicios" className="container py-12 sm:py-24">
       <AnimatePresence mode="wait">
         <motion.div
           key={i18n.language + "services-header"}
@@ -44,16 +44,16 @@ const Services = () => {
           transition={{ duration: 0.3 }}
           className="text-center space-y-4 mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">
             {t('servicios_titulo')}
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-xl text-muted-foreground">
             {t('servicios_subtitulo')}
           </p>
         </motion.div>
       </AnimatePresence>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
@@ -62,7 +62,7 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
-            className="relative p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300"
+            className="relative p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
           >
             <motion.div
               initial={{ scale: 0 }}
@@ -82,7 +82,7 @@ const Services = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-lg font-semibold text-foreground dark:text-white mb-2 mt-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2 mt-2">
                   {t(service.title)}
                 </h3>
                 <p className="text-muted-foreground">

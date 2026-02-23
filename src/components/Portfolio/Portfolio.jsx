@@ -31,7 +31,8 @@ const projects = [
     link: "https://portfolio-claudio.pages.dev/",
     github: "#",
     tags: ["React", "Tailwind", "Vite"]
-  },  {
+  },
+  {
     title: "MFGA",
     description: "Proyecto MFGA",
     image: "/img/Mfga1.png",
@@ -132,6 +133,26 @@ const projects = [
   }
 ];
 
+const tagColors = {
+  'React': 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/20',
+  'Tailwind': 'bg-teal-500/15 text-teal-600 dark:text-teal-400 border-teal-500/20',
+  'Vite': 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/20',
+  'Astro': 'bg-orange-500/15 text-orange-600 dark:text-orange-400 border-orange-500/20',
+  'JavaScript': 'bg-yellow-500/15 text-yellow-600 dark:text-yellow-400 border-yellow-500/20',
+  'Node.js': 'bg-green-500/15 text-green-600 dark:text-green-400 border-green-500/20',
+  'MySQL': 'bg-sky-500/15 text-sky-600 dark:text-sky-400 border-sky-500/20',
+  'Figma': 'bg-pink-500/15 text-pink-600 dark:text-pink-400 border-pink-500/20',
+  'UI Design': 'bg-red-500/15 text-red-600 dark:text-red-400 border-red-500/20',
+  'UX Research': 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/20',
+  'Prototyping': 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/20',
+  'User Testing': 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
+  'User Flow': 'bg-violet-500/15 text-violet-600 dark:text-violet-400 border-violet-500/20',
+};
+
+const getTagColor = (tag) => {
+  return tagColors[tag] || 'bg-secondary text-muted-foreground border-border';
+};
+
 const Portfolio = () => {
   const { t, i18n } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("web");
@@ -144,7 +165,7 @@ const Portfolio = () => {
   const filteredProjects = projects.filter((project) => project.category === selectedCategory);
 
   return (
-    <div id="portfolio" className="container py-24">
+    <div id="portfolio" className="container py-12 sm:py-24">
       <AnimatePresence mode="wait">
         <motion.div
           key={i18n.language + "portfolio-header"}
@@ -154,10 +175,10 @@ const Portfolio = () => {
           transition={{ duration: 0.3 }}
           className="text-center space-y-4 mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">
             {t('portfolio_titulo')}
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-xl text-muted-foreground">
             {t('portfolio_subtitulo')}
           </p>
         </motion.div>
@@ -175,11 +196,10 @@ const Portfolio = () => {
           <motion.button
             key={category.id}
             onClick={() => setSelectedCategory(category.id)}
-            className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
-              selectedCategory === category.id
-                ? "bg-primary text-white scale-105"
-                : "bg-secondary/50 hover:bg-secondary text-foreground dark:text-white"
-            }`}
+            className={`px-5 py-2 sm:px-6 sm:py-2.5 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${selectedCategory === category.id
+              ? "bg-gradient-to-r from-primary to-purple-600 text-white shadow-lg shadow-primary/25 scale-105"
+              : "bg-secondary hover:bg-secondary/80 text-foreground"
+              }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -191,7 +211,7 @@ const Portfolio = () => {
       {/* Grid de proyectos */}
       <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 max-w-6xl mx-auto"
       >
         <AnimatePresence mode="wait">
           {filteredProjects.map((project) => (
@@ -202,104 +222,63 @@ const Portfolio = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              className="group relative bg-[#1e2533] rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group relative bg-card rounded-xl shadow-lg hover:shadow-xl border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden"
             >
-              {project.category === "web" ? (
-                // Monitor frame para proyectos web
-                <div className="relative p-4 overflow-hidden">
-                  <div className="relative bg-[#0f141e] rounded-md overflow-hidden">
-                    {/* Screen */}
-                    <div className="aspect-[4/3] relative overflow-hidden">
-                      <LazyImage 
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-center mix-blend-normal"
-                      />
-                    </div>
-                    {/* Monitor stand */}
-                    <div className="h-4 bg-gray-200 flex items-center justify-center">
-                      <div className="w-6 h-1 bg-gray-300 rounded"></div>
-                    </div>
-                    <div className="h-10 w-16 bg-gray-300 mx-auto rounded-b-md"></div>
-                  </div>
+              {/* Image container — rounded + dark bg to mask white edges */}
+              <div className="relative overflow-hidden m-3 sm:m-4 rounded-lg bg-muted/50 dark:bg-muted/20">
+                <div className="aspect-[4/3] flex items-center justify-center p-2">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-contain rounded-md"
+                  />
                 </div>
-              ) : (
-                // Phone frame para proyectos UX/UI
-                <div className="relative p-4 flex justify-center">
-                  <div className="relative bg-[#0f141e] rounded-3xl overflow-hidden border-4 border-gray-800 shadow-lg">
-                    {/* Notch del teléfono */}
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-7 bg-gray-800 rounded-b-xl z-10"></div>
-                    
-                    {/* Phone screen */}
-                    <div className="aspect-[9/19.5] w-48 relative overflow-hidden bg-white">
-                      <LazyImage 
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover object-top mix-blend-normal"
-                      />
-                    </div>
-                    
-                    {/* Home button */}
-                    <div className="h-4 flex items-center justify-center bg-gray-800">
-                      <div className="w-10 h-1 bg-gray-600 rounded-full"></div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
+              </div>
+
               {/* Content */}
-              <div className="p-4 text-white">
-                <h3 className="text-xl font-bold mb-1">
+              <div className="px-4 pb-4">
+                <h3 className="text-lg sm:text-xl font-bold mb-1 text-foreground">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4 text-sm">
+                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
                   {t(project.description)}
                 </p>
-                
+
                 <div className="flex justify-between items-center">
                   <div className="flex gap-2">
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      aria-label={t('ver_proyecto')}
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </motion.a>
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      aria-label={t('ver_codigo')}
-                    >
-                      <Github className="h-4 w-4" />
-                    </motion.a>
+                    {project.link !== "#" && (
+                      <motion.a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors shadow-md shadow-primary/20"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        aria-label={`${t('ver_proyecto')}: ${project.title}`}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </motion.a>
+                    )}
+                    {project.github !== "#" && (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-secondary text-foreground hover:bg-secondary/80 transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        aria-label={`${t('ver_codigo')}: ${project.title}`}
+                      >
+                        <Github className="h-4 w-4" />
+                      </motion.a>
+                    )}
                   </div>
-                  <div className="flex flex-wrap gap-2 justify-end">
+                  <div className="flex flex-wrap gap-1.5 justify-end">
                     {project.tags.map((tag, index) => index < 3 && (
                       <span
                         key={tag}
-                        className={`
-                          px-2 py-1 rounded text-xs font-medium
-                          ${tag === 'React' ? 'bg-blue-900 text-blue-200' : ''}
-                          ${tag === 'Tailwind' ? 'bg-teal-900 text-teal-200' : ''}
-                          ${tag === 'Vite' ? 'bg-purple-900 text-purple-200' : ''}
-                          ${tag === 'Astro' ? 'bg-orange-900 text-orange-200' : ''}
-                          ${tag === 'JavaScript' ? 'bg-yellow-900 text-yellow-200' : ''}
-                          ${tag === 'Node.js' ? 'bg-green-900 text-green-200' : ''}
-                          ${tag === 'MySQL' ? 'bg-orange-900 text-orange-200' : ''}
-                          ${tag === 'Figma' ? 'bg-pink-900 text-pink-200' : ''}
-                          ${tag.includes('UI') ? 'bg-red-900 text-red-200' : ''}
-                          ${tag.includes('UX') ? 'bg-yellow-900 text-yellow-200' : ''}
-                          ${tag.includes('User') ? 'bg-indigo-900 text-indigo-200' : ''}
-                          ${!tag.match(/(React|Tailwind|Vite|Astro|JavaScript|Node.js|MySQL|Figma|UI|UX|User)/) ? 'bg-gray-700 text-gray-200' : ''}
-                        `}
+                        className={`px-2 py-0.5 rounded-full text-xs font-medium border ${getTagColor(tag)}`}
                       >
                         {tag}
                       </span>

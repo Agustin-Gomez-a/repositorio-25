@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 
@@ -74,7 +74,7 @@ const Contact = () => {
   ];
 
   return (
-    <div id="contacto" className="container py-24">
+    <div id="contacto" className="container py-12 sm:py-24">
       <AnimatePresence mode="wait">
         <motion.div
           key={i18n.language + "contact-header"}
@@ -84,16 +84,16 @@ const Contact = () => {
           transition={{ duration: 0.3 }}
           className="text-center space-y-4 mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">
             {t('contacto_titulo')}
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-xl text-muted-foreground">
             {t('contacto_subtitulo')}
           </p>
         </motion.div>
       </AnimatePresence>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
         {/* Información de contacto */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -110,7 +110,7 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className="relative p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300"
+              className="relative p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
             >
               <motion.div
                 initial={{ scale: 0 }}
@@ -130,11 +130,11 @@ const Contact = () => {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-lg font-semibold text-foreground dark:text-white mb-2 mt-2">
+                  <h3 className="text-lg font-semibold text-foreground mb-2 mt-2">
                     {t(info.title)}
                   </h3>
                   <p className="text-muted-foreground">
-                    {t(info.value)}
+                    {info.value}
                   </p>
                 </motion.div>
               </AnimatePresence>
@@ -148,9 +148,9 @@ const Contact = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="relative p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-border"
+          className="relative p-5 sm:p-8 rounded-xl sm:rounded-2xl bg-card/80 backdrop-blur-sm border border-border"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-2xl" />
           <form onSubmit={handleSubmit} className="relative space-y-6">
             <AnimatePresence mode="wait">
               <motion.div
@@ -161,45 +161,48 @@ const Contact = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div className="mb-6">
-                  <label htmlFor="name" className="block text-foreground dark:text-white font-medium mb-2">
+                  <label htmlFor="name" className="block text-foreground font-medium mb-2">
                     {t('nombre')}
-                  </label>                  <input
+                  </label>
+                  <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground text-foreground dark:text-white"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-background border-2 border-border focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 text-sm sm:text-base text-foreground outline-none"
                     required
                     placeholder={t('nombre_placeholder')}
                   />
                 </div>
-                
+
                 <div className="mb-6">
-                  <label htmlFor="email" className="block text-foreground dark:text-white font-medium mb-2">
+                  <label htmlFor="email" className="block text-foreground font-medium mb-2">
                     {t('email')}
-                  </label>                  <input
+                  </label>
+                  <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground text-foreground dark:text-white"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-background border-2 border-border focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 text-sm sm:text-base text-foreground outline-none"
                     required
                     placeholder={t('email_placeholder')}
                   />
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block text-foreground dark:text-white font-medium mb-2">
+                  <label htmlFor="message" className="block text-foreground font-medium mb-2">
                     {t('mensaje')}
-                  </label>                  <textarea
+                  </label>
+                  <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows="4"
-                    className="w-full px-4 py-3 rounded-lg bg-white/5 border-2 border-border focus:border-primary transition-colors placeholder:text-muted-foreground text-foreground dark:text-white"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg bg-background border-2 border-border focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 text-sm sm:text-base text-foreground outline-none resize-none"
                     required
                     placeholder={t('mensaje_placeholder')}
                   ></textarea>
@@ -211,7 +214,8 @@ const Contact = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="group w-full inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-purple-600 text-white font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+              disabled={isSubmitting}
+              className="group w-full inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-lg bg-gradient-to-r from-primary to-purple-600 text-white text-sm sm:text-base font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <span className="flex items-center">
@@ -219,7 +223,7 @@ const Contact = () => {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
-                  Sending...
+                  {t('enviando')}
                 </span>
               ) : (
                 <>
@@ -227,17 +231,33 @@ const Contact = () => {
                   <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </>
               )}
+            </motion.button>
+
+            {/* Status messages */}
+            <AnimatePresence>
               {submitStatus === 'success' && (
-                <div className="absolute top-full left-0 right-0 mt-2 text-green-500 text-sm">
-                  {t('mensaje_enviado')}
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="flex items-center gap-2 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-600 dark:text-green-400"
+                >
+                  <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                  <span className="text-sm font-medium">{t('mensaje_enviado')}</span>
+                </motion.div>
               )}
               {submitStatus === 'error' && (
-                <div className="absolute top-full left-0 right-0 mt-2 text-red-500 text-sm">
-                  {t('error_mensaje')}
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="flex items-center gap-2 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400"
+                >
+                  <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                  <span className="text-sm font-medium">{t('error_mensaje')}</span>
+                </motion.div>
               )}
-            </motion.button>
+            </AnimatePresence>
           </form>
         </motion.div>
       </div>

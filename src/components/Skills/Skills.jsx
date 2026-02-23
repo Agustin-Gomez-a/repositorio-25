@@ -20,7 +20,7 @@ const Skills = () => {
     {
       name: "React",
       icon: <SiReact className="h-8 w-8" />,
-      level: "nivel_avanzado",
+      level: "nivel avanzado",
       percentage: 90,
       color: "from-[#61DAFB] to-[#00B4D8]",
       shadowColor: "shadow-[#61DAFB]/20",
@@ -60,7 +60,7 @@ const Skills = () => {
     {
       name: "Node.js",
       icon: <SiNodedotjs className="h-8 w-8" />,
-      level: "nivel_intermedio",
+      level: "nivel intermedio",
       percentage: 60,
       color: "from-[#339933] to-[#4CAF50]",
       shadowColor: "shadow-[#339933]/20",
@@ -84,7 +84,7 @@ const Skills = () => {
     {
       name: "English",
       icon: <GiWorld className="h-8 w-8" />,
-      level: "nivel_basico",
+      level: "nivel basico",
       percentage: 50,
       color: "from-purple-500 to-pink-500",
       shadowColor: "shadow-purple-500/20",
@@ -92,7 +92,7 @@ const Skills = () => {
   ];
 
   return (
-    <div id="habilidades" className="container py-24">
+    <div id="habilidades" className="container py-12 sm:py-24">
       <AnimatePresence mode="wait">
         <motion.div
           key={i18n.language + "skills-header"}
@@ -102,11 +102,11 @@ const Skills = () => {
           transition={{ duration: 0.3 }}
           className="text-center space-y-4 mb-16"
         >
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-foreground">
             {t('habilidades_titulo')}
           </h2>
-          <p className="text-xl text-muted-foreground">
-            {t('tecnologias')}
+          <p className="text-base sm:text-xl text-muted-foreground">
+            {t('habilidades_subtitulo')}
           </p>
         </motion.div>
       </AnimatePresence>
@@ -116,7 +116,7 @@ const Skills = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        className="grid gap-4 sm:gap-6 grid-cols-2 sm:grid-cols-2 lg:grid-cols-3"
       >
         {skills.map((skill, index) => (
           <motion.div
@@ -126,16 +126,16 @@ const Skills = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             whileHover={{ scale: 1.02 }}
-            className="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-background to-secondary/5 p-6 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg"
+            className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-card p-4 sm:p-6 border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5"
           >
             <div className={`absolute inset-0 bg-gradient-to-r ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-            
+
             <div className="relative z-10 flex flex-col items-center text-center space-y-4">
               <motion.div
                 initial={{ rotate: 0, scale: 1 }}
                 whileHover={{ rotate: 360, scale: 1.2 }}
                 transition={{ duration: 0.7, type: "spring", stiffness: 200 }}
-                className={`relative inline-flex rounded-2xl bg-gradient-to-r ${skill.color} p-6 text-white shadow-lg ${skill.shadowColor} transform-gpu`}
+                className={`relative inline-flex rounded-xl sm:rounded-2xl bg-gradient-to-r ${skill.color} p-4 sm:p-6 text-white shadow-lg ${skill.shadowColor} transform-gpu`}
               >
                 <div className="absolute inset-0 rounded-2xl bg-white/20 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative z-10">{skill.icon}</div>
@@ -150,11 +150,11 @@ const Skills = () => {
                   transition={{ duration: 0.3 }}
                   className="space-y-2"
                 >
-                  <h3 className="text-xl font-bold text-foreground dark:text-white">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground">
                     {skill.name}
                   </h3>
                   <p className="text-sm font-medium text-muted-foreground">
-                    {t(skill.level.replace('_', ' '))}
+                    {t(skill.level)}
                   </p>
                 </motion.div>
               </AnimatePresence>
