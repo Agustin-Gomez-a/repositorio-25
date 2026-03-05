@@ -77,12 +77,31 @@ const projects = [
     github: "https://github.com/Agustin-Gomez-a/sitevacunarg",
     tags: ["React", "Tailwind", "Vite"]
   },
+
   {
-    title: "Viazzo",
-    description: "Proyecto Viazzo",
-    image: "/img/apple-viazzo.png",
+    title: "Consultoría",
+    description: "Proyecto Consultoría",
+    image: "/img/consultoria.png",
     category: "web",
-    link: "https://viazzo.netlify.app/",
+    link: "https://consultoria5556999954hpllo.vercel.app/",
+    github: "#",
+    tags: ["React", "Tailwind", "Vite"]
+  },
+  {
+    title: "Julieta CV",
+    description: "Proyecto Julieta CV",
+    image: "/img/julietacv.png",
+    category: "web",
+    link: "https://julietaporfolio.netlify.app/",
+    github: "#",
+    tags: ["React", "Tailwind", "Vite"]
+  },
+  {
+    title: "Amsterdam BarberShop",
+    description: "Proyecto Amsterdam BarberShop",
+    image: "/img/amsterdam.png",
+    category: "web",
+    link: "https://ambsterdambarbershop.netlify.app/",
     github: "#",
     tags: ["React", "Tailwind", "Vite"]
   },
